@@ -1,10 +1,10 @@
 import { StyleSheet, View } from 'react-native';
-import AuthForm from './components/Auth/AuthForm';
+import AuthContent from './components/Auth/AuthContent';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AuthForm />
+      <AuthContent />
     </View>
   );
 }
