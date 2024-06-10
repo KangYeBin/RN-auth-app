@@ -3,9 +3,10 @@ import { Alert, StyleSheet, View } from 'react-native';
 import AuthForm from './AuthForm';
 import FlatButton from '../ui/FlatButton';
 import { Colors } from '../../constants/styles';
+import { useNavigation } from '@react-navigation/native';
 
-const AuthContent = ({ onAuthenticate }) => {
-  const [isLogin, setIsLogin] = useState(true);
+const AuthContent = ({ onAuthenticate, isLogin }) => {
+  const navigation = useNavigation();
 
   const [credentialsInvalid, setCredentialsInvalid] = useState({
     email: false,
@@ -46,6 +47,15 @@ const AuthContent = ({ onAuthenticate }) => {
     // 회원가입 or 로그인 처리
     onAuthenticate({ email, password, name });
   };
+
+  const switchAuthModeHandler = () => {
+    if (isLogin) {
+      navigation.replace('Signup');
+    } else {
+      navigation.replace('Login');
+    }
+  };
+
   return (
     <View style={styles.authContent}>
       <AuthForm
@@ -54,7 +64,7 @@ const AuthContent = ({ onAuthenticate }) => {
         credentialsInvalid={credentialsInvalid}
       />
       <View>
-        <FlatButton>
+        <FlatButton onPress={switchAuthModeHandler}>
           {isLogin ? '회원 가입하기' : '로그인 화면으로 이동하기'}
         </FlatButton>
       </View>
