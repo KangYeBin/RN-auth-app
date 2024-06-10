@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import Input from '../ui/Input';
 import { useState } from 'react';
-import FlatButton from '../ui/FlatButton';
+import Button from '../ui/Button';
 
 const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }) => {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -88,9 +88,9 @@ const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }) => {
         )}
       </View>
       <View style={styles.buttons}>
-        <FlatButton onPress={submitHandler}>
+        <Button onPress={submitHandler}>
           {isLogin ? '로그인' : '회원 가입'}
-        </FlatButton>
+        </Button>
       </View>
     </View>
   );
