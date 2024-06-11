@@ -12,10 +12,10 @@ const LoginScreen = () => {
     console.log('loginHandler email : ', email);
 
     try {
-      const token = await login(email, password);
-      authCtx.authenticate(token);
+      const { token, userName, role } = await login(email, password);
+      authCtx.authenticate(token, userName, role);
     } catch (error) {
-      Alert.alert(error);
+      Alert.alert(error.message);
     }
   };
   return <AuthContent isLogin onAuthenticate={loginHandler} />;
